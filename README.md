@@ -1,7 +1,6 @@
 #MadCrime:#
 ##A round-up of Madison Police Department Incident Reports##
 
-
 ###About###
 ----
 A working title, [MadCrime's](http://madcrime.chrislkeller.com/) basic functionality uses Python to scrape a [table](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71) of [Madison Police Department](http://www.cityofmadison.com/police/) incident reports and display the content to the user.
@@ -10,7 +9,8 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 
 ###Install & Run The Scraper###
 ----
-- cd to madcrime app directory and run pip install -r requirements.txt.  I've been using the following:
+- Download the zip file or fork the repo. Cd to your project directory and run pip install -r requirements.txt. I've been using the following for madcrime:
+
 	BeautifulSoup==3.2.1
 	
 	Django==1.4
