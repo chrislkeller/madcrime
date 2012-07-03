@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %} Latest Madison Police Incidents {% endblock %}
+
+{% block content %}
+
+{% block page-header %}
+	<div class="page-headers">
+		<h2>Latest Madison Police Incident Reports</h2>
+	</div>
+{% endblock page-header %}
+
+{% if addresses %}
+
+<!-- begin scripts -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		writeMap();
+	});
+
+	function writeMap() {
+
+        {% load l10n %}
+
+		var myOptions = {
+			zoom: 11,
+			center: new google.maps.LatLng(43.0730517, -89.4012302),
+            scrollwheel: false,
+            draggable: true,
+            mapTypeControl: false,
+            navigationControl: true,
+            streetViewControl: false,
+            panControl: false,
+            scaleControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL,
+                position: google.maps.ControlPosition.RIGHT_TOP}
+            };
+		
+		var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+        {% localize off %}
+        
+
+        {% for addr in addresses %}
+        var latlng = new google.maps.LatLng({{ addr.latitude }}, {{ addr.longitude }});
+
+		var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: '{{ addr.address }}'
+		});
+		
+
+/*
+		var info = new google.maps.InfoWindow({
+			content: 'You Clicked Me'
+		});
+
+		google.maps.event.addListener(marker, 'click', function() {
+			info.open(map, marker);
+		});
+*/
+
+		{% endfor %}
+
+		{% endlocalize %}
+
+	}
+</script> 
+<!-- end  scripts -->
+
+	<!-- write map -->
+	<div id="map-display">	
+		<div id="map_canvas" style="width: 700px; height: 400px; margin: 0 auto 0 auto;"></div>
+	</div>
+	<!-- end map -->
+
+{% else %}
+	<p>No Addresses</p>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<!-- begin doc -->
+<html lang="en">
+
+<!-- begin header -->
+<head>
+
+<!-- begin meta -->
+<meta charset="utf-8">
+<title>{% block title %}{% endblock %}</title>
+
+{% block description %}
+<meta name="description" content="A working title, MadCrime's basic functionality uses Python to scrape a table of Madison Police Department incident reports and display the content to the user. From the list of reports, a user can click through to see the location of the incident and read the details. To the best of my ability I tried to format the details to resemble sentences, but much of that is above my skill level at this point." />
+{% endblock %}
+
+{% block keywords %}
+<meta name="keywords" content="Madison Police Department, Incident Reports, Madison Wis, Madison Crime" />
+{% endblock %}
+<!-- end meta -->
+
+<!-- begin css  -->
+<link rel="stylesheet" href="http://current.bootstrapcdn.com/bootstrap-v204/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/styles.css">
+<!-- end css  -->
+
+<!-- begin scripts -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<!-- end scripts -->
+
+</head>
+<!-- end header -->
+
+<!-- begin body -->
+<body>
+
+{% block container %}
+<div class="container">
+
+<!-- begin navigation -->
+<div id="main-navigation">
+<ul>
+<li><a class="centered btn btn-large btn-success" href="/"><i class="icon-home icon-white"></i> Home</a></li>
+<li><a class="centered btn btn-large btn-success" href="/incidents/"><i class="icon-bullhorn icon-white"></i> Incident Reports</a></li>
+<li><a class="centered btn btn-large btn-success" href="/api/v1/incident/?format=json" target="_blank"><i class="icon-search icon-white"></i> JSON Output</a></li>
+<!-- <li><a class="centered btn btn-large btn-success" href="#"><i class="icon-globe icon-white"></i> GitHub Repo</a></li> -->
+<!-- <li><a class="centered btn btn-large btn-success" href="/admin/"><i class="icon-search icon-white"></i> Search incidents</a></li> -->
+<!-- <li><a class="centered btn btn-large btn-success" href="/admin/"><i class="icon-plus icon-white"></i> Manage incidents</a></li> -->
+</ul>
+</div>
+
+{% block content %}
+
+{% block page-header %}{% endblock page-header %}
+
+{% block exports %}{% endblock exports %}
+
+{% endblock content %}
+
+<!-- begin footer -->
+<div id="footer"></div>
+<!-- begin footer -->
+
+</div>
+{% endblock container %}
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32883064-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+<!-- end body -->
+
+</html>
+<!-- end doc -->

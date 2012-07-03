@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+<title>{% block title %} {{ incident.typeDetails }} | MadCrime {% endblock %}</title>
+
+{% block description %}
+<meta name="description" content="{{ incident.detailsDetails }}" />
+{% endblock %}
+
+{% block keywords %}
+<meta name="keywords" content=">{{ incident.typeDetails }}, Madison Police Department, Incident Reports, Madison Wis, Madison Crime" />
+{% endblock %}
+
+{% block content %}
+
+{% block page-header %}
+<div class="page-headers">
+<h1>{{ incident.typeDetails }}</h1>
+</div>
+{% endblock page-header %}
+
+<!-- default map with address, width, height and zoom -->
+{% load easy_maps_tags %}
+<div id="map-display">{% easy_map incident.addressDetails 600 300  16  using 'details-map.html' %}</div>
+
+<!-- begin incident content -->
+<div id="incident-content">
+
+<!-- begin incident type -->
+{% if incident.typeDetails == 'Arrested Person' %}
+	<p>On {{ incident.dateDetails }}, Madison Police arrested an individual at {{ incident.addressDetails }}</p>
+
+{% else %} 
+	<p>On {{ incident.dateDetails }}, Madison Police responded to a call of {{ incident.typeDetails}} at {{ incident.addressDetails }}</p>
+
+{% endif %}
+<!-- end incident type -->
+
+<!-- begin suspect details -->
+{% if incident.suspectDetails == 'None' %}
+{% elif incident.suspectDetails == 'N/A' %}
+{% elif incident.suspectDetails == '-' %}
+{% elif incident.suspectDetails == 'See below:' %}
+{% elif incident.suspectDetails == 'See Below:' %}
+{% elif incident.suspectDetails %}
+	<p>Police identified the suspect as {{ incident.suspectDetails }}, according to the <a href="{{ incident.linkIncidents }}">incident report</a>.</p>
+
+{% else %} 
+	<p>Police have not identified as suspect, according to the <a href="{{ incident.linkIncidents }}">incident report</a>.</p>
+
+{% endif %}
+<!-- end suspect details -->
+
+<!-- begin arrested details -->
+{% if incident.arrestedDetails == 'Continuing Investigation' %}
+	<p>Police called the {{ incident.typeDetails }} a "{{ incident.arrestedDetails }}," according to the incident report.</p>
+
+{% elif incident.arrestedDetails == '(None)'  %}
+	<p>No arrests were made, according to the incident report.</p>
+
+{% elif incident.typeDetails == 'Missing Adult' and incident.arrestedDetails|length <= 2 %}
+	
+{% elif incident.arrestedDetails == 'N/A' %}
+	<p>No arrest information was available from the incident report.</p>
+	
+{% elif not incident.arrestedDetails %}
+	<p>No arrest information was available from the incident report.</p>
+
+{% else %} 
+	<p>Police arrested {{ incident.arrestedDetails }}, according to the incident report.</p>
+
+{% endif %}</p>
+<!-- end arrested details -->
+
+<!-- begin victim details -->
+{% if incident.victimDetails %}
+	<p>Police described the victim as {{ incident.victimDetails }}, according to the incident report.</p>
+
+{% endif %}</p>
+<!-- end victim details -->
+
+<p><strong>According to the incident report:</strong><br />{{ incident.detailsDetails }}</p>
+
+<p>The case number is {{ incident.caseIncidents }}.</p>
+
+<div id="footer-buttons">
+<ul>
+<li><a class="centered btn btn-large btn-danger" href="/incidents"><i class="icon-step-backward icon-white"></i> Back to incident list</a></li>
+<li><a class="centered btn btn-large btn-primary" href="{{ incident.linkIncidents }}" target="_blank">Read incident report <i class="icon-play icon-white"></i></a></li>
+</ul>
+</div>
+
+</div>
+<!-- end incident content -->
+
+{% endblock content %}

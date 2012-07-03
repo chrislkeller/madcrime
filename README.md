@@ -1,0 +1,66 @@
+#MadCrime:#
+##A round-up of Madison Police Department Incident Reports##
+
+###About###
+A working title, [MadCrime's](http://madcrime.chrislkeller.com/) basic functionality uses Python to scrape a [table](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71) of [Madison Police Department](http://www.cityofmadison.com/police/) incident reports and display the content to the user.
+
+From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user can click through to see the location of the incident and read the details. To the best of my ability I tried to format the details to resemble sentences, but much of that is above my skill level at this point.
+
+A basic JSON output -- perfect to store locally -- via [TastyPie](http://django-tastypie.readthedocs.org/en/latest/index.html) is available [here](http://madcrime.chrislkeller.com/api/v1/incident/?format=json).
+
+###Install & Run The Scraper###
+
+- cd to madcrime app directory and run pip install -r requirements.txt.  I've been using the following:
+	
+	BeautifulSoup==3.2.1
+	Django==1.4
+	South==0.7.5
+	django-easy-maps==0.7.2
+	django-tastypie==0.9.11
+	geopy==0.94.2
+	mechanize==0.2.5
+	mimeparse==0.1.3
+	psycopg2==2.4.5
+	python-dateutil==1.5
+	virtualenv==1.7.1.2
+	virtualenv-clone==0.2.4
+	virtualenvwrapper==3.5
+	wsgiref==0.1.2
+	yolk==0.4.3
+
+- Add 'madcrime' & 'easy\_maps' to INSTALLED_APPS in settings.py.
+
+- Add (r'^incidents/', include('madcrime.urls')) to urls.py
+
+- To scrape, change to your project directory and run "python manage.py scrapepd"
+
+- The scraper is located in madcrime/management/commands/scrapepd.py
+
+###Ideas to take this further###
+
+####User Improvements####
+- Search, search, search: Plain text, by date, by incident type, by address or radius.
+- Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
+- Determine how to handle cases that aren't posted.
+- Add map with markers and aldermanic ward polygons.
+- Alert system for when new incidents are loaded.
+- Hook in with Wis Circuit Court Access queries?
+- Table view should appear in descending order.
+- Sorting of Incidents using tablesorter or datatables jQuery plugins.
+- Add layers of demographic data or other interesting tidbits.
+- Query madison.com and other local news sources for information about the incidents.
+
+####Admin Improvements####
+- Rich text editor.
+- Ponder addition of a queue manager that holds incident details until they are edited/reviewed.
+- Sort incidents by release date in admin .
+- Templates Improvements
+
+####MVC Improvements####
+- Find new method of geocoding addresses and storing them so Incidents model can access this information.
+- Rename model information, or make json output dev friendly.
+
+####Scraper Improvements####
+- Cron job to run the scraper twice daily.
+- Learn RegExpressions and python methods to split Date and Time -- stored in incidentDetails -- into separate values.
+- Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
