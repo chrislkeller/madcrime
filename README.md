@@ -51,6 +51,7 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 ----
 ####User Improvements####
 - Search, search, search: Plain text, by date, by incident type, by address or radius.
+- Add a method of narrowing incidents on the main map by similar search criteria.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
 - <del>Add map to main page with markers locating where incidents occured.</del>
