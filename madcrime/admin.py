@@ -3,7 +3,7 @@ from django.contrib import admin
 
 class IncidentAdmin(admin.ModelAdmin):
 
-	list_display = ('dateDetails', 'dateIncidents', 'typeDetails', 'addressDetails', 'suspectDetails', 'arrestedDetails', 'victimDetails')
+	list_display = ('dateDetails', 'dateIncidents', 'typeDetails', 'addressDetails', 'geocode_error', 'suspectDetails', 'arrestedDetails', 'victimDetails')
 
     	fieldsets = [
     	   ('Release Date', {'fields': ['dateIncidents']}),
@@ -11,6 +11,10 @@ class IncidentAdmin(admin.ModelAdmin):
     	   ('Incident Type', {'fields': ['typeDetails']}),
     	   ('Incident Link', {'fields': ['linkIncidents']}),
     	   ('Incident Address', {'fields': ['addressDetails']}),
+    	   ('Computed Address', {'fields': ['computed_address']}),
+    	   ('Lat', {'fields': ['latitude']}),
+    	   ('Long', {'fields': ['longitude']}),
+    	   ('Error', {'fields': ['geocode_error']}),
     	   ('Incident Case', {'fields': ['caseIncidents']}),
     	   ('Incident Suspects', {'fields': ['suspectDetails']}),
     	   ('Incident Arrested', {'fields': ['arrestedDetails']}),
@@ -18,7 +22,7 @@ class IncidentAdmin(admin.ModelAdmin):
     	   ('Incident Details', {'fields': ['detailsDetails']}),
 		]
 
-	list_filter = ['dateDetails', 'typeDetails']
+	list_filter = ['geocode_error', 'dateDetails', 'typeDetails']
 	search_fields = ['dateIncidents', 'dateDetails', 'typeDetails', 'linkIncidents', 'addressDetails', 'caseIncidents', 'suspectDetails', 'arrestedDetails', 'victimDetails', 'detailsDetails']
 
 admin.site.register(Incident, IncidentAdmin)
