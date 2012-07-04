@@ -18,12 +18,10 @@
 </div>
 {% endblock page-header %}
 
-<!-- default map with address, width, height and zoom -->
-{% load easy_maps_tags %}
-<div id="map-display">{% easy_map incident.addressDetails 600 300  16  using 'details-map.html' %}</div>
+{% include "details-map.html" %}
 
 <!-- begin incident content -->
-<div id="incident-content">
+<div class="incident-content">
 
 <!-- begin incident type -->
 {% if incident.typeDetails == 'Arrested Person' %}
