@@ -53,7 +53,8 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 - Search, search, search: Plain text, by date, by incident type, by address or radius.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
-- Add map with markers and aldermanic ward polygons.
+- <s>Add map to main page with markers locating where incidents occured.</s>
+- Add map with aldermanic ward polygons.
 - Alert system for when new incidents are loaded.
 - Hook in with Wis Circuit Court Access queries?
 - Table view should appear in descending order.
@@ -68,10 +69,11 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 - Templates Improvements
 
 ####MVC Improvements####
-- Find new method of geocoding addresses and storing them so Incidents model can access this information.
+- <s>Find new method of geocoding addresses and storing them so Incidents model can access this information.</s>
 - Rename model information, or make json output dev friendly.
 
 ####Scraper Improvements####
+- <s>Add command line input, asking user which page to scrape</s>.
 - Cron job to run the scraper twice daily.
 - Learn RegExpressions and python methods to split Date and Time -- stored in incidentDetails -- into separate values.
 - Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
