@@ -1,20 +1,7 @@
-{% extends "base.html" %}
-
-{% block title %} Latest Madison Police Incidents {% endblock %}
-
-{% block content %}
-
-{% block page-header %}
-	<div class="page-headers">
-		<h2>Latest Madison Police Incident Reports</h2>
-	</div>
-{% endblock page-header %}
-
-{% if addresses %}
-
 <!-- begin scripts -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
+
+// called from include
 
     $(document).ready(function(){
 		writeMap();
@@ -22,7 +9,8 @@
 
 	function writeMap() {
 
-        {% load l10n %}
+    	var infowindow;
+    	var infoWindowContent = '';
 
 		var myOptions = {
 			zoom: 11,
@@ -41,33 +29,28 @@
             };
 		
 		var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-
-        {% localize off %}
         
+		{% for addr in incident_listing %}
 
-        {% for addr in addresses %}
-        var latlng = new google.maps.LatLng({{ addr.latitude }}, {{ addr.longitude }});
+            var latlng = new google.maps.LatLng({{ addr.latitude }}, {{ addr.longitude }});
 
-		var marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
-                title: '{{ addr.address }}'
-		});
-		
+                title: '{{ addr.typeDetails }}'
+                });
 
 /*
-		var info = new google.maps.InfoWindow({
-			content: 'You Clicked Me'
-		});
-
-		google.maps.event.addListener(marker, 'click', function() {
-			info.open(map, marker);
-		});
+            google.maps.event.addListener(marker, 'click', function() {
+                if(infowindow) infowindow.close();
+                else infowindow = new google.maps.InfoWindow();
+                infoWindowContent = infowindow.setContent('{{ addr.typeDetails }}');	
+                infowindow.setPosition(latlng);
+                infowindow.open(map);	
+            });
 */
 
 		{% endfor %}
-
-		{% endlocalize %}
 
 	}
 </script> 
@@ -75,12 +58,6 @@
 
 	<!-- write map -->
 	<div id="map-display">	
-		<div id="map_canvas" style="width: 700px; height: 400px; margin: 0 auto 0 auto;"></div>
+		<div id="map_canvas"></div>
 	</div>
 	<!-- end map -->
-
-{% else %}
-	<p>No Addresses</p>
-{% endif %}
-
-{% endblock content %}
