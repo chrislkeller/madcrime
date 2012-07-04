@@ -1,11 +1,19 @@
-#MadCrime:#
+#MadSafety:#
 ##A round-up of Madison Police Department Incident Reports##
 
 ###About###
 ----
-A working title, [MadCrime's](http://madcrime.chrislkeller.com/) basic functionality uses Python to scrape a [table](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71) of [Madison Police Department](http://www.cityofmadison.com/police/) incident reports and display the content to the user.
+[MadSafety](http://madsafety.nwsmkr.com/incidents) uses Python to scrape a table of [Madison Police Department](http://www.cityofmadison.com/police/) incident [reports](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71) and display the content to the user.
 
-From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user can click through to see the location of the incident and read the details. To the best of my ability I tried to format the details to resemble sentences, but much of that is above my skill level at this point.
+From the list of reports, a user can click through to see the location of the incident and read the details.
+
+Incident reports from the Madison Fire Department will be added soon.
+
+###Links###
+----
+- [View Project](http://www.madsafety.nwsmkr.com/incidents/)
+- [Read Walkthrough](http://www.chrislkeller.com/introducing-madcrime-a-django-based-scraper-o)
+- [View on GitHub](https://github.com/chrislkeller/madcrime)
 
 ###Install & Run The Scraper###
 ----
@@ -51,7 +59,6 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 ----
 ####User Improvements####
 - Search, search, search: Plain text, by date, by incident type, by address or radius.
-- Add a method of narrowing incidents on the main map by similar search criteria.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
 - <del>Add map to main page with markers locating where incidents occured.</del>
