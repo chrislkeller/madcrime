@@ -17,8 +17,6 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 	
 	South==0.7.5
 	
-	django-easy-maps==0.7.2
-	
 	geopy==0.94.2
 	
 	mechanize==0.2.5
@@ -37,7 +35,7 @@ From the [list of reports](http://madcrime.chrislkeller.com/incidents/), a user 
 	
 	yolk==0.4.3
 
-- Add 'madcrime' & 'easy\_maps' to INSTALLED_APPS in settings.py.
+- Add 'madcrime' to INSTALLED_APPS in settings.py.
 
 - Add (r'^incidents/', include('madcrime.urls')) to urls.py
 
