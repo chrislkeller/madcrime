@@ -11,6 +11,8 @@ class Command(BaseCommand):
     help = 'Scrapes Madison Police Department Data'
 
     def handle(self, *args, **options):
+        pageNumber = raw_input('Which Page to Scrape?')
+
         print ('\nStarting scrape at %s\n' % str(datetime.datetime.now()))
         
         # set some varibles to make life easier
@@ -21,7 +23,7 @@ class Command(BaseCommand):
         # use selectors to whittle
         # down to the content
         mech = Browser()
-        urlIncidents = 'http://www.cityofmadison.com/incidentReports/incidentList.cfm?a=71&page=1'
+        urlIncidents = 'http://www.cityofmadison.com/incidentReports/incidentList.cfm?a=71&page=' + pageNumber
         pageIncidents = mech.open(urlIncidents)
         htmlIncidents = pageIncidents.read()
         soupIncidents = BeautifulSoup(htmlIncidents)
@@ -127,8 +129,5 @@ class Command(BaseCommand):
         	       detailsDetails = models['Details']
         	       obj.detailsDetails = detailsDetails[:3000]
         	       obj.save()
-        	   
 
-        print 'Scraper is finished'
-        	   
-  
+        print 'Finished scraping page ' + pageNumber + ' of Madison Police Incidents.'
