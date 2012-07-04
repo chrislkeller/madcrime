@@ -1,13 +1,13 @@
-#MadSafety:#
+#MadCrime:#
 ##A round-up of Madison Police Department Incident Reports##
 
 ###About###
 ----
-[MadSafety](http://madsafety.nwsmkr.com/incidents) uses Python to scrape a table of [Madison Police Department](http://www.cityofmadison.com/police/) incident [reports](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71) and display the content to the user.
+MadCrime is the Django app -- or rather Python scraper -- behind [MadSafety](http://www.madsafety.nwsmkr.com/incidents), which is a table of [Madison Police Department](http://www.cityofmadison.com/police/) incident [reports](http://www.cityofmadison.com/incidentReports/incidentlist.cfm?a=71).
 
 From the list of reports, a user can click through to see the location of the incident and read the details.
 
-Incident reports from the Madison Fire Department will be added soon.
+I hope to have MadFire -- a Python scraper for incident reports from the Madison Fire Department -- finished soon.
 
 ###Links###
 ----
