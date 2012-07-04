@@ -59,6 +59,8 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 ----
 ####User Improvements####
 - Search, search, search: Plain text, by date, by incident type, by address or radius.
+- Filter map markers on the incidents page by similar criteria.
+- Add incident reports from the Madison Fire Department.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
 - <del>Add map to main page with markers locating where incidents occured.</del>
