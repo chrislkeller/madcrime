@@ -1,7 +1,6 @@
 BeautifulSoup==3.2.1
 Django==1.4
 South==0.7.5
-django-easy-maps==0.7.2
 geopy==0.94.2
 mechanize==0.2.5
 mimeparse==0.1.3
