@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-
 from madcrime.views import index, detail
 
 urlpatterns = patterns('',
@@ -16,5 +15,7 @@ urlpatterns = patterns('',
         kwargs  = {},
         name    = 'details-table',
     ),
+
+    url(r'^search/', include('haystack.urls')),
 
 )
