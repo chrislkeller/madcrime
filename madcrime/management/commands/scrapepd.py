@@ -129,5 +129,6 @@ class Command(BaseCommand):
         	       detailsDetails = models['Details']
         	       obj.detailsDetails = detailsDetails[:3000]
         	       obj.save()
+        	   
 
         print 'Finished scraping page ' + pageNumber + ' of Madison Police Incidents.'
