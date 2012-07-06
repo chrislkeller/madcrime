@@ -30,7 +30,9 @@
 		
 		var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
         
+        
 		{% for addr in incident_listing %}
+
 
             var latlng = new google.maps.LatLng({{ addr.latitude }}, {{ addr.longitude }});
 
@@ -51,6 +53,8 @@
 */
 
 		{% endfor %}
+
+
 
 	}
 </script> 
