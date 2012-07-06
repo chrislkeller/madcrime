@@ -16,6 +16,7 @@
 
 {% block keywords %}
 <meta name="keywords" content="Madison Police Department, Madison Fire Department, Incident Reports, Madison Wis, Madison crimes, Madison fires, public safety" />
+
 {% endblock %}
 <!-- end meta -->
 
@@ -26,6 +27,7 @@
 
 <!-- begin scripts -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://madsafety.nwsmkr.com/static/scripts/sorttable.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <!-- end scripts -->
 
@@ -41,7 +43,11 @@
 <!-- begin navigation -->
 <div id="main-navigation">
 <ul>
-<li><a class="centered btn btn-large btn-success" href="/incidents/"><i class="icon-bullhorn icon-white"></i> Incident Reports</a></li>
+<li><a class="centered btn btn-large btn-success" href="/"><i class="icon-home icon-white"></i> Home</a></li>
+<li><a class="centered btn btn-large btn-success" href="/about/"><i class="icon-question-sign icon-white"></i> About</a></li>
+<li><a class="centered btn btn-large btn-success" href="/incidents/"><i class="icon-map-marker icon-white"></i> Police Reports</a></li>
+<li><a class="centered btn btn-large btn-success" href="/search/"><i class="icon-search icon-white"></i> Search</a></li>
+<li><a class="centered btn btn-large btn-success" href="/api/v1/incident/?format=json" target="_blank"><i class="icon-globe icon-white"></i> JSON</a></li>
 </ul>
 </div>
 
