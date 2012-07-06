@@ -50,7 +50,6 @@ Add the following to settings.py:
 Add the following to urls.py:
 
 	(r'^incidents/', include('madcrime.urls')),
-	(r'^search/', include('haystack.urls')),
 
 Run python manage.py syncdb from your project directory.
 
