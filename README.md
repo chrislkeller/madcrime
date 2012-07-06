@@ -17,16 +17,21 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 
 ###Install & Run The Scraper###
 ----
-- Download the zip file or fork the repo. Cd to your project directory and run pip install -r requirements.txt. I've been using the following for madcrime:
+Download the zip file or fork the repo. Cd to your project directory and run pip install -r requirements.txt. I've been using the following for madcrime:
 
-	BeautifulSoup==3.2.1
-	
-	Django==1.4
+BeautifulSoup==3.2.1
+
+
+Django==1.4
 	
 	South==0.7.5
 	
+	django-haystack==2.0.0-beta (Needed to solve an issue I ran into. Your mileage may vary.)
+	
 	geopy==0.94.2
 	
+	haystack==0.15
+		
 	mechanize==0.2.5
 	
 	mimeparse==0.1.3
@@ -43,9 +48,16 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 	
 	yolk==0.4.3
 
-- Add 'madcrime' to INSTALLED_APPS in settings.py.
+- Add 'madcrime' and 'haystack' to INSTALLED_APPS in settings.py.
 
 - Add (r'^incidents/', include('madcrime.urls')) to urls.py
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
 
 - Run python manage.py syncdb from your project directory.
 
@@ -58,7 +70,7 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 ###Ideas to take this further###
 ----
 ####User Improvements####
-- Search, search, search: Plain text, by date, by incident type, by address or radius.
+- Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - Filter map markers on the incidents page by similar criteria.
 - Add incident reports from the Madison Fire Department.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
@@ -67,8 +79,9 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 - Add map with aldermanic ward polygons.
 - Alert system for when new incidents are loaded.
 - Hook in with Wis Circuit Court Access queries?
-- Table view should appear in descending order.
-- Sorting of Incidents using tablesorter or datatables jQuery plugins.
+- <del>Table view should appear in descending order.</del>
+- Search of incident table using datatables jQuery plugin.
+- <del>Sorting of incident table using tablesorter or datatables jQuery plugins.</del>
 - Add layers of demographic data or other interesting tidbits.
 - Query madison.com and other local news sources for information about the incidents.
 
