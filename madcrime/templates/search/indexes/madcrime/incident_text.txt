@@ -1,0 +1,4 @@
+{{ object.typeDetails }}
+{{ object.dateIncidents }}
+{{ object.linkIncidents }}
+{{ object.detailsDetails }}
