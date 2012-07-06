@@ -35,6 +35,12 @@ body {background: #9e9e9e;}
 .page-headers h3 {text-align: center;}
 .lowercase {text-transform: lowercase;}
 
+/* Sortable tables */
+table.sortable thead {background-color:#000000; color:#ffffff; font-weight: bold; cursor: default;}
+
+table.sortable th.sorted {cursor: pointer;}
+
+
 /* images */
 .big-image
 {width: 85%; margin: 5px auto 5px auto;}
