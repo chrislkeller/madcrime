@@ -19,49 +19,42 @@ I hope to have MadFire -- a Python scraper for incident reports from the Madison
 ----
 Download the zip file or fork the repo. Cd to your project directory and run pip install -r requirements.txt. I've been using the following for madcrime:
 
-BeautifulSoup==3.2.1
+    BeautifulSoup==3.2.1
+    Django==1.4
+    South==0.7.5
+    django-haystack==2.0.0-beta (Needed to solve an issue I ran into. Your mileage may vary.)
+    geopy==0.94.2
+    haystack==0.15
+    mechanize==0.2.5
+    mimeparse==0.1.3
+    python-dateutil==1.5
+    virtualenv==1.7.1.2
+    virtualenv-clone==0.2.4
+    virtualenvwrapper==3.5
+    wsgiref==0.1.2
+    yolk==0.4.3
 
+Add the following to INSTALLED_APPS in settings.py:
 
-Django==1.4
-	
-	South==0.7.5
-	
-	django-haystack==2.0.0-beta (Needed to solve an issue I ran into. Your mileage may vary.)
-	
-	geopy==0.94.2
-	
-	haystack==0.15
-		
-	mechanize==0.2.5
-	
-	mimeparse==0.1.3
-	
-	python-dateutil==1.5
-	
-	virtualenv==1.7.1.2
-	
-	virtualenv-clone==0.2.4
-	
-	virtualenvwrapper==3.5
-	
-	wsgiref==0.1.2
-	
-	yolk==0.4.3
+	'madcrime',
+	'haystack',
 
-- Add 'madcrime' and 'haystack' to INSTALLED_APPS in settings.py.
+Add the following to settings.py:
 
-- Add (r'^incidents/', include('madcrime.urls')) to urls.py
+	HAYSTACK_CONNECTIONS = {
+		'default': {
+			'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+		},
+	}
 
+Add the following to urls.py:
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    },
-}
+	(r'^incidents/', include('madcrime.urls')),
+	(r'^search/', include('haystack.urls')),
 
-- Run python manage.py syncdb from your project directory.
+Run python manage.py syncdb from your project directory.
 
-- To scrape run python manage.py scrapepd from your project directory.
+To scrape run python manage.py scrapepd from your project directory. You will be asked which page you want to scrape. Enter 1 to the first page, etc.
 
 - Run python manage.py runserver and navigate to /incidents, and hopefully you see a list of incidents.
 
@@ -71,6 +64,7 @@ HAYSTACK_CONNECTIONS = {
 ----
 ####User Improvements####
 - Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
+- <del>Add basic search capabilities.</del>
 - Filter map markers on the incidents page by similar criteria.
 - Add incident reports from the Madison Fire Department.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
