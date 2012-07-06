@@ -3,7 +3,7 @@ from django.contrib import admin
 
 class IncidentAdmin(admin.ModelAdmin):
 
-	list_display = ('dateDetails', 'dateIncidents', 'typeDetails', 'addressDetails', 'geocode_error', 'suspectDetails', 'arrestedDetails', 'victimDetails')
+	list_display = ('dateDetails', 'dateIncidents', 'typeDetails', 'addressDetails', 'computed_address', 'geocode_error', 'suspectDetails', 'arrestedDetails', 'victimDetails')
 
     	fieldsets = [
     	   ('Release Date', {'fields': ['dateIncidents']}),
