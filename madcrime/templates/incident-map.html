@@ -5,7 +5,8 @@
 
     $(document).ready(function(){
 		writeMap();
-	});
+		closeDialog ();
+		});
 
 	function writeMap() {
 
@@ -30,9 +31,7 @@
 		
 		var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
         
-        
 		{% for addr in incident_listing %}
-
 
             var latlng = new google.maps.LatLng({{ addr.latitude }}, {{ addr.longitude }});
 
@@ -42,22 +41,30 @@
                 title: '{{ addr.typeDetails }}'
                 });
 
-/*
             google.maps.event.addListener(marker, 'click', function() {
-                if(infowindow) infowindow.close();
-                else infowindow = new google.maps.InfoWindow();
-                infoWindowContent = infowindow.setContent('{{ addr.typeDetails }}');	
-                infowindow.setPosition(latlng);
-                infowindow.open(map);	
-            });
-*/
+			
+				$('#popupContent').modal('show');
+
+				$('#popupIncident').html('<h3><a href="{{ addr.linkIncidents }}">{{ addr.typeDetails }}</a></h4>');
+				
+				$('#popupDetails').html(
+				    '<p><strong>Date: </strong>{{ addr.dateDetails }}</p>' + 
+				    '<p><strong>Location: </strong>{{ addr.addressDetails }}</p>');
+
+				$('#popupLinks').html(
+				    '<a href="/incidents/{{ addr.id }}" class="btn btn-primary">View Details</a>' +
+				    '<a href="#" class="btn secondary" onclick="closeDialog ();">Close</a>');
+
+			});
 
 		{% endfor %}
 
-
-
 	}
-</script> 
+
+	function closeDialog () {
+		$('#popupContent').modal('hide');
+	};
+	</script> 
 <!-- end  scripts -->
 
 	<!-- write map -->
@@ -65,3 +72,11 @@
 		<div id="map_canvas"></div>
 	</div>
 	<!-- end map -->
+
+	<!-- begin modal box -->
+	<div id="popupContent" class="modal hide fade in">
+	   <div id="popupIncident" class="modal-header"></div> 
+	   <div id="popupDetails" class="modal-body"></div>
+	   <div id="popupLinks" class="modal-footer"></div> 
+    </div>
+<!-- end modal box -->	
