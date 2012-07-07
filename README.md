@@ -65,6 +65,7 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - <del>Add basic search capabilities.</del>
 - <del>Add pop up when user clicks on incident map.</del>
+- Add map and pop ups to search results page.
 - Filter map markers on the incidents page by similar criteria.
 - Add incident reports from the Madison Fire Department.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
