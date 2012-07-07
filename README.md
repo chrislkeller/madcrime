@@ -51,7 +51,7 @@ Add the following to urls.py:
 
 	(r'^incidents/', include('madcrime.urls')),
 
-Run python manage.py syncdb from your project directory.
+Run python manage.py syncdb from project directory.
 
 To scrape run python manage.py scrapepd from your project directory. You will be asked which page you want to scrape. Enter 1 to the first page, etc.
 
