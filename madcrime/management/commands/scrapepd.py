@@ -1,11 +1,12 @@
+import urllib
+import urllib2
+import time, datetime
 from django.core.management.base import BaseCommand
 from madcrime.models import Incident
 from mechanize import Browser
 from BeautifulSoup import BeautifulSoup
-import urllib
-import urllib2
-import time, datetime
 from django.utils.encoding import smart_str, smart_unicode
+from dateutil import parser
 
 class Command(BaseCommand):
     help = 'Scrapes Madison Police Department Data'
@@ -38,18 +39,21 @@ class Command(BaseCommand):
             # whittle through content
             cells = row.findAll('td')
             dateIncidents = cells[0].string
+
+            # use dateutil to convert string to date/time object
+            convertedDateIncidents = parser.parse(dateIncidents)
             linkIncidents = prefixIncidents + cells[1].a['href']
             caseIncidents  = cells[2].text.encode('utf-8')
 
             # save content to django models
             try:
                 obj = Incident.objects.get(caseIncidents = caseIncidents)
-                obj.dateIncidents = dateIncidents
+                obj.dateIncidents = convertedDateIncidents
                 obj.linkIncidents = linkIncidents
                 obj.caseIncidents = caseIncidents
                 obj.save()
             except Incident.DoesNotExist:
-                obj = Incident(dateIncidents = dateIncidents, linkIncidents=linkIncidents, caseIncidents = caseIncidents)
+                obj = Incident(dateIncidents = convertedDateIncidents, linkIncidents=linkIncidents, caseIncidents = caseIncidents)
                 obj.save()
                         	
         	# use selectors to whittle
@@ -95,7 +99,8 @@ class Command(BaseCommand):
         	   #print models
         	   if models.has_key('Incident Date'):
         	       dateDetails = models['Incident Date']
-        	       obj.dateDetails = dateDetails
+        	       convertedDateDetails = parser.parse(dateDetails)
+        	       obj.dateDetails = convertedDateDetails
         	       obj.save()
         	       
         	   if models.has_key('Incident Type'):
