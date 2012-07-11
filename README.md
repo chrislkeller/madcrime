@@ -62,39 +62,40 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 ###Ideas to take this further###
 ----
 ####User Improvements####
-- Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - <del>Add basic search capabilities.</del>
 - <del>Add pop up when user clicks on incident map.</del>
+- <del>Add map to main page with markers locating where incidents occured.</del>
+- <del>Table view should appear in descending order.</del>
+- <del>Sorting of incident table using tablesorter or datatables jQuery plugins.</del>
+- Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - Add map and pop ups to search results page.
 - Filter map markers on the incidents page by similar criteria.
 - Add incident reports from the Madison Fire Department.
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
-- <del>Add map to main page with markers locating where incidents occured.</del>
 - Add map with aldermanic ward polygons.
 - Alert system for when new incidents are loaded.
 - Hook in with Wis Circuit Court Access queries?
-- <del>Table view should appear in descending order.</del>
 - Search of incident table using datatables jQuery plugin.
-- <del>Sorting of incident table using tablesorter or datatables jQuery plugins.</del>
 - Add layers of demographic data or other interesting tidbits.
 - Query madison.com and other local news sources for information about the incidents.
 
 ####Admin Improvements####
 - Rich text editor.
 - Ponder addition of a queue manager that holds incident details until they are edited/reviewed.
-- Sort incidents by release date in admin .
-- Templates Improvements
+- <del>Sort incidents by release date in admin.</del>
+- Template Improvements.
 
 ####MVC Improvements####
 - <del>Find new method of geocoding addresses and storing them so Incidents model can access this information.</del>
+- <del>Change date of incident and date of incident report released to DateTime and Date fields.</del>
 - Rename model information, or make json output dev friendly.
 
 ####Scraper Improvements####
-- <del>Add command line input, asking user which page to scrape</del>.
-- Cron job to run the scraper twice daily.
-- Learn RegExpressions and python methods to split Date and Time -- stored in incidentDetails -- into separate values.
+- <del>Add command line input, asking user which page to scrape.</del>
+- <del>Learn RegExpressions and python methods (from dateutil import parser) to split Date and Time -- stored in incidentDetails -- into separate values.</del>
 - Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
+- Cron job to run the scraper twice daily.
 
 ###License###
 ----
