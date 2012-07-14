@@ -81,9 +81,9 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - Query madison.com and other local news sources for information about the incidents.
 
 ####Admin Improvements####
+- <del>Sort incidents by release date in admin.</del>
 - Rich text editor.
 - Ponder addition of a queue manager that holds incident details until they are edited/reviewed.
-- <del>Sort incidents by release date in admin.</del>
 - Template Improvements.
 
 ####MVC Improvements####
