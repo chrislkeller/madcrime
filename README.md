@@ -67,6 +67,8 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - <del>Add map to main page with markers locating where incidents occured.</del>
 - <del>Table view should appear in descending order.</del>
 - <del>Sorting of incident table using tablesorter or datatables jQuery plugins.</del>
+- <del>Add date to map marker tooltip.</del>
+- <del>Add filter to main incident list so only incidents over last seven days appear.</del>
 - Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - Add map and pop ups to search results page.
 - Filter map markers on the incidents page by similar criteria.
@@ -93,7 +95,9 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 
 ####Scraper Improvements####
 - <del>Add command line input, asking user which page to scrape.</del>
-- <del>Learn RegExpressions and python methods (from dateutil import parser) to split Date and Time -- stored in incidentDetails -- into separate values.</del>
+- <del>Use dateutil import parser to convert Date and Time information stored in incidentDetails into DateTime model.</del>
+- <del>Convert <br /> tags into periods.</del>
+- <del>Learn RegExp to add a space after periods found in suspect and arrested descriptions.</del>
 - Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
 - Cron job to run the scraper twice daily.
 
