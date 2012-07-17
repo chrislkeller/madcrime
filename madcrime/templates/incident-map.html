@@ -38,7 +38,7 @@
             var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
-                title: '{{ addr.typeDetails }}'
+                title: '{{ addr.dateDetails }}: {{ addr.typeDetails }}'
                 });
 
             google.maps.event.addListener(marker, 'click', function() {
