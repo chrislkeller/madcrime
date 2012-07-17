@@ -1,11 +1,12 @@
 import urllib
 import urllib2
 import re
+import types
 import time, datetime
 from django.core.management.base import BaseCommand
 from madcrime.models import Incident
 from mechanize import Browser
-from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup, Tag
 from django.utils.encoding import smart_str, smart_unicode
 from dateutil import parser
 
@@ -64,6 +65,11 @@ class Command(BaseCommand):
             pageDetails = mech.open(urlDetails)
             htmlDetails = pageDetails.read()
             soupDetails = BeautifulSoup(htmlDetails, convertEntities=BeautifulSoup.HTML_ENTITIES)
+
+            # replaces br tags with periods
+            for breakPoint in soupDetails.findAll('br'):
+                new = "."
+                breakPoint.replaceWith(new)
             
             # hits incident detail table and returns the contents
             tableDetails = soupDetails.find('table', {'id': 'incidentdetail'})
@@ -119,12 +125,20 @@ class Command(BaseCommand):
                else:
                    suspectDetails = 'None'
 
-               obj.suspectDetails = suspectDetails
+               # adds space after period
+               p = re.compile('(\S)\.(\S)')
+               suspectOutput = re.sub(p, '\g<1>. \g<2>', suspectDetails)
+
+               obj.suspectDetails = suspectOutput
                obj.save()
 
                if models.has_key('Arrested'):
                    arrestedDetails = models['Arrested']
-                   obj.arrestedDetails = arrestedDetails
+
+                   # adds space after period
+                   p = re.compile('(\S)\.(\S)')
+                   arrestOutput = re.sub(p, '\g<1>. \g<2>', arrestedDetails)
+                   obj.arrestedDetails = arrestOutput
                    obj.save()
 
                if models.has_key('Victim'):
