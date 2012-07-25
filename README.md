@@ -92,6 +92,7 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - <del>Find new method of geocoding addresses and storing them so Incidents model can access this information.</del>
 - <del>Change date of incident and date of incident report released to DateTime and Date fields.</del>
 - Rename model information, or make json output dev friendly.
+- Consider the possibilities with [django-bakery](https://github.com/datadesk/django-bakery/).
 
 ####Scraper Improvements####
 - <del>Add command line input, asking user which page to scrape.</del>
