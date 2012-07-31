@@ -99,6 +99,7 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - <del>Use dateutil import parser to convert Date and Time information stored in incidentDetails into DateTime model.</del>
 - <del>Convert \<br /> tags into periods.</del>
 - <del>Learn RegExp to add a space after periods found in suspect and arrested descriptions.</del>
+- <del>Added check against database for case number when scraping so to not lose edited addresses when running the scraper.</del>
 - Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
 - Cron job to run the scraper twice daily.
 
