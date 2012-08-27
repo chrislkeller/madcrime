@@ -69,10 +69,10 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - <del>Sorting of incident table using tablesorter or datatables jQuery plugins.</del>
 - <del>Add date to map marker tooltip.</del>
 - <del>Add filter to main incident list so only incidents over last seven days appear.</del>
+- <del>Add incident reports from the Madison Fire Department.</del>
 - Improve basic search to include plain text, search by date, search by incident type, search by address or search by radius.
 - Add map and pop ups to search results page.
 - Filter map markers on the incidents page by similar criteria.
-- <del>Add incident reports from the Madison Fire Department.</del>
 - Determine if content from Madison's Most Wanted and CrimeStoppers has a place.
 - Determine how to handle cases that aren't posted.
 - Add map with aldermanic ward polygons.
@@ -100,8 +100,9 @@ To scrape run python manage.py scrapepd from your project directory. You will be
 - <del>Convert \<br /> tags into periods.</del>
 - <del>Learn RegExp to add a space after periods found in suspect and arrested descriptions.</del>
 - <del>Added check against database for case number when scraping so to not lose edited addresses when running the scraper.</del>
+- <del>Cron job to run the scraper twice daily.</del>
 - Learn RegExpressions and python methods to split suspect/arrest information -- stored in suspectDetails and arrestDetails -- into separate values.
-- Cron job to run the scraper twice daily.
+
 
 ###License###
 ----
