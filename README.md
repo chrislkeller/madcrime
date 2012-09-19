@@ -22,9 +22,7 @@ Download the zip file or fork the repo. Cd to your project directory and run pip
     BeautifulSoup==3.2.1
     Django==1.4
     South==0.7.5
-    django-haystack==2.0.0-beta (Needed to solve an issue I ran into. Your mileage may vary.)
     geopy==0.94.2
-    haystack==0.15
     mechanize==0.2.5
     mimeparse==0.1.3
     python-dateutil==1.5
@@ -37,15 +35,6 @@ Download the zip file or fork the repo. Cd to your project directory and run pip
 Add the following to INSTALLED_APPS in settings.py:
 
 	'madcrime',
-	'haystack',
-
-Add the following to settings.py:
-
-	HAYSTACK_CONNECTIONS = {
-		'default': {
-			'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-		},
-	}
 
 Add the following to urls.py:
 
