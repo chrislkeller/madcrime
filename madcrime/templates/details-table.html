@@ -27,8 +27,8 @@
 {% if incident.typeDetails == 'Arrested Person' %}
 	<p>On {{ incident.dateDetails }}, Madison Police arrested an individual at {{ incident.addressDetails }}</p>
 
-{% else %} 
-	<p>On {{ incident.dateDetails }}, Madison Police responded to a call of {{ incident.typeDetails}} at {{ incident.addressDetails }}</p>
+{% else %}
+	<p>On {{ incident.dateDetails }}, Madison Police responded to a call of {{ incident.typeDetails|lower }} at {{ incident.addressDetails }}</p>
 
 {% endif %}
 <!-- end incident type -->
@@ -39,44 +39,54 @@
 {% elif incident.suspectDetails == '-' %}
 {% elif incident.suspectDetails == 'See below:' %}
 {% elif incident.suspectDetails == 'See Below:' %}
-{% elif incident.suspectDetails %}
-	<p>Police identified the suspect as {{ incident.suspectDetails }}, according to the <a href="{{ incident.linkIncidents }}">incident report</a>.</p>
-
-{% else %} 
-	<p>Police have not identified as suspect, according to the <a href="{{ incident.linkIncidents }}">incident report</a>.</p>
-
+{% elif incident.suspectDetails == 'Continuing Investigation' %}
+	<p>Police said the investigation continues, according to the incident report</a>.</p>
+{% elif not incident.suspectDetails %}
+	<p>Police have not identified a suspect, according to the incident report</a>.</p>
+{% else %}
+	<p>Police identified the suspect as {{ incident.suspectDetails }}, according to the incident report</a>.</p>
 {% endif %}
 <!-- end suspect details -->
 
 <!-- begin arrested details -->
-{% if incident.arrestedDetails == 'Continuing Investigation' %}
-	<p>Police called the {{ incident.typeDetails }} a "{{ incident.arrestedDetails }}," according to the incident report.</p>
-
+{% if incident.arrestedDetails == 'None'  %}
 {% elif incident.arrestedDetails == '(None)'  %}
-	<p>No arrests were made, according to the incident report.</p>
-
-{% elif incident.typeDetails == 'Missing Adult' and incident.arrestedDetails|length <= 2 %}
-	
 {% elif incident.arrestedDetails == 'N/A' %}
-	<p>No arrest information was available from the incident report.</p>
-	
+{% elif incident.arrestedDetails == 'n/a' %}
+{% elif incident.arrestedDetails == 'n/w' %}
+{% elif incident.typeDetails == 'Missing Adult' and incident.arrestedDetails|length <= 2 %}
+{% elif incident.arrestedDetails == 'No arrest made at this point.' %}
 {% elif not incident.arrestedDetails %}
-	<p>No arrest information was available from the incident report.</p>
-
-{% else %} 
+{% elif incident.arrestedDetails == 'Continuing Investigation' %}
+	<p>Police called the {{ incident.typeDetails }} a "{{ incident.arrestedDetails }}," according to the incident report.</p>
+{% else %}
 	<p>Police arrested {{ incident.arrestedDetails }}, according to the incident report.</p>
-
-{% endif %}</p>
+{% endif %}
 <!-- end arrested details -->
 
 <!-- begin victim details -->
-{% if incident.victimDetails %}
+{% if incident.victimDetails == 'None' %}
+{% elif incident.victimDetails == '(None)' %}
+{% elif incident.victimDetails == 'n/a' %}
+{% elif incident.victimDetails == 'N/A' %}
+{% elif incident.victimDetails == 'See narrative below:' %}
+{% elif incident.victimDetails == 'See narrative below' %}
+{% elif incident.victimDetails == 'See below:' %}
+{% elif incident.victimDetails == 'See below' %}
+{% elif incident.victimDetails == 'See Below:' %}
+{% elif incident.victimDetails == 'See Below' %}
+{% elif incident.victimDetails == 'Unk' %}
+	<p>Police described the victim as unknown, according to the incident report.</p>
+{% elif incident.victimDetails == 'unk' %}
+	<p>Police described the victim as unknown, according to the incident report.</p>
+{% elif incident.victimDetails == 'Multiple' %}
+	<p>There were multiple victims , according to the incident report.</p>
+{% else %}
 	<p>Police described the victim as {{ incident.victimDetails }}, according to the incident report.</p>
-
-{% endif %}</p>
+{% endif %}
 <!-- end victim details -->
 
-<p><strong>According to the incident report:</strong><br />{{ incident.detailsDetails }}</p>
+<p><a href="{{ incident.linkIncidents }}"><strong>According to the incident report</strong>:</a><br />{{ incident.detailsDetails }}</p>
 
 <p>The case number is {{ incident.caseIncidents }}.</p>
 
