@@ -48,6 +48,3 @@ class Incident(models.Model):
 
     def __unicode__(self):
         return self.addressDetails
-
-    #def __unicode__(self):
-        #return self.caseIncidents
