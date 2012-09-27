@@ -9,6 +9,8 @@ From the list of reports, a user can click through to see the location of the in
 
 I hope to have MadFire -- a Python scraper for incident reports from the Madison Fire Department -- finished soon.
 
+![MadSafety](http://projects.chrislkeller.com/images/madsafety/MadSafety.png)
+
 ###Links###
 ----
 - [View Project](http://www.madsafety.nwsmkr.com/incidents/)
